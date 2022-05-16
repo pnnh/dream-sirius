@@ -1,12 +1,11 @@
-<div class="fx-card">
+<span class="fx-card">
   <slot></slot>
-</div>
+</span>
 
 <style lang="scss">
   .fx-card {
-    background: #FFFFFF;
-    padding: 16px;
-    border-radius: 4px;
+    color: green;
+    //font-size: 14px;
   }
 </style>
 
