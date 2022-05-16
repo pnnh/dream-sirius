@@ -1,37 +1,12 @@
 import {defineConfig} from 'vite'
 import path from 'path'
 import {visualizer} from 'rollup-plugin-visualizer'
-import * as fs from 'fs'
-import {svelte} from '@sveltejs/vite-plugin-svelte'
 import type {PreRenderedAsset, PreRenderedChunk} from 'rollup'
 import strip from '@rollup/plugin-strip'
-import sveltePreprocess from 'svelte-preprocess'
-
-function listFile (dir: string): string[] {
-  const arr = fs.readdirSync(dir)
-  const list: string[] = []
-  arr.forEach(function (item) {
-    const fullPath = path.join(dir, item)
-    const stats = fs.statSync(fullPath)
-    if (!stats.isDirectory()) {
-      const extName = path.extname(fullPath)
-      if (['.scss', '.css', '.tsx', '.ts', '.js'].includes(extName)) {
-        list.push(fullPath)
-      }
-    }
-  })
-  return list
-}
 
 const config = defineConfig(({command, mode}) => {
   const plugins = [
     //react(),
-    svelte({
-      compilerOptions: {
-        customElement: true
-      },
-      preprocess: sveltePreprocess()
-    }),
     visualizer({
       filename: 'dist/status.html'
     }),

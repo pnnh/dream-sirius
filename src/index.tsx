@@ -4,12 +4,6 @@ import {GoTop} from '@/components/go-top'
 import './index.scss'
 import {randomPassword} from './utils/rand'
 
-export * from '@/components/card.svelte'
-export * from '@/components/hello.svelte'
-export * from '@/components/Clock.svelte'
-export * from '@/pages/utils/timestamp.svelte'
-export * from '@/pages/utils/md5.svelte'
-
 const goTopElement = document.getElementById('go-top')
 if (goTopElement) {
   //ReactDOM.render(<GoTop/>, goTopElement)
