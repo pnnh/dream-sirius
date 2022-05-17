@@ -1,10 +1,8 @@
 import ReactDOM from 'react-dom'
-import React, { useEffect } from 'react'
-import { getJsonData } from '@/utils/helpers'
+import React, {useEffect} from 'react'
+import {getJsonData} from '@/utils/helpers'
 import Prism from 'prismjs'
 import '@/utils/highlight'
-import { articleDelete } from '@/services/article'
-import { ApiUrl } from '@/utils/config'
 
 const ArticleMenu = () => {
   const data = getJsonData<any>()
@@ -25,35 +23,14 @@ const ArticleMenu = () => {
   </button>
   children.push(createButton)
 
-  if (data.creator) {
-    const editButton = <button className={'fx-primary-button edit-button'} onClick={() => {
-      window.location.href = '/article/edit/' + data.pk
-    }}>编辑</button>
-    children.push(editButton)
-
-    const deleteButton = <button className={'fx-primary-button delete-button'}
-                                 onClick={() => {
-                                   console.log('delete')
-                                   if (confirm('确定删除吗？')) {
-                                     console.debug('确认删除')
-                                     articleDelete(data.pk).then((out) => {
-                                       console.debug('articleDelete', out)
-                                       if (out) {
-                                         window.location.href = ApiUrl.home
-                                       }
-                                     })
-                                   }
-                                 }}>删除</button>
-    children.push(deleteButton)
-  }
   const elements = children.map((element, index) =>
     <div key={index}>
       {element}
     </div>)
 
   return <div className={'article-page-menu'}>
-      {elements}
-    </div>
+    {elements}
+  </div>
 }
 
 export function ReadPage () {
